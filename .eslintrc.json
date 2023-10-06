@@ -1,3 +1,12 @@
+// {
+//   "extends": "next/core-web-vitals"
+// }
+
+// (configuracion de curso, no recomendado para produccion)
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules":{
+    "@next/next/no-img-element":"off",
+    "jsx-a11y/alt-text":"off"
+  }
 }
