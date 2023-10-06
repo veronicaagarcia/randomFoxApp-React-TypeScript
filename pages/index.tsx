@@ -36,7 +36,12 @@ const Home: NextPage = () => {
         <button onClick={addNewFox} className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-full">Add new Fox Image</button>
         {images.map(({id, url}) => (
           <div key={id} className='p-4'>
-            <RandomFox image={url}/>
+            <RandomFox 
+            width={350} 
+            height="auto" 
+            className="rounded bg-gray-300" 
+            image={url} 
+            onClick={() => console.log('img')}/>
           </div>
         ))}
       </main>
