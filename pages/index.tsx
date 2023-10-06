@@ -3,17 +3,20 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { RandomFox } from './compnents/RandomFox'
 import styles from '../styles/Home.module.css'
+import { type } from 'os';
 
 const random = () => Math.floor(Math.random() * 123) + 1;
+type ImageItem = Array<{id:string, url:string}>;
+const generatedId = () => Math.random().toString(36).substr(2,9);
 
 const Home: NextPage = () => {
 
-  const [images, setImages] = useState([
-    `https://randomfox.ca/images/${random()}.jpg`,
-    `https://randomfox.ca/images/${random()}.jpg`,
-    `https://randomfox.ca/images/${random()}.jpg`
+  const [images, setImages] = useState<ImageItem>([
+    {id: generatedId() , url:`https://randomfox.ca/images/${random()}.jpg`},
+    {id: generatedId() , url:`https://randomfox.ca/images/${random()}.jpg`},
+    {id: generatedId() , url:`https://randomfox.ca/images/${random()}.jpg`},
   ])
-  
+     
   return (
     <div className={styles.container}>
       <Head>
@@ -26,9 +29,9 @@ const Home: NextPage = () => {
         </h1>
         <p className={styles.footer}> Un componente generico de React para cargar imagenes con Lazy Loading</p>
         <p className={styles.footer}> Las imagenes agregadas no se descargaran hasta que sean visibles en la pantalla</p>
-        {images.map((image, index) => (
-          <div key={index} className='p-4'>
-            <RandomFox image={image}/>
+        {images.map(({id, url}) => (
+          <div key={id} className='p-4'>
+            <RandomFox image={url}/>
           </div>
         ))}
       </main>
