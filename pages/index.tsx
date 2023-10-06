@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import { RandomFox } from './compnents/RandomFox'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Random Fox Images - React y TypeScript
         </h1>
-
+        <RandomFox />
   
       </main>
 
