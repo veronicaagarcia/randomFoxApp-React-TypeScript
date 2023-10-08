@@ -34,14 +34,19 @@ const Home: NextPage = () => {
         <p className={styles.footer}> Las imagenes agregadas no se descargaran hasta que sean visibles en la pantalla</p>
 
         <button onClick={addNewFox} className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-full">Add new Fox Image</button>
-        {images.map(({id, url}) => (
+
+        {images.map(({id, url}, index) => (
           <div key={id} className='p-4'>
             <RandomFox 
             width={350} 
             height="auto" 
             className="rounded bg-gray-300" 
             image={url} 
-            onClick={() => console.log('img')}/>
+            onClick={() => console.log('img')}
+            onLazyLoad={(img) => {
+              console.log(`Imagen #${index + 1} cargada. El nodo es:`, img);
+            }}
+            />
           </div>
         ))}
       </main>
